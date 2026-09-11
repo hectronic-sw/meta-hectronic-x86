@@ -1,0 +1,16 @@
+Upstream-Status: Pending
+
+diff -Naur linux-6.6.50.org/drivers/mmc/host/sdhci-pci-core.c linux-6.6.50/drivers/mmc/host/sdhci-pci-core.c
+--- linux-6.6.50.org/drivers/mmc/host/sdhci-pci-core.c	2026-09-11 11:27:34.730047029 +0200
++++ linux-6.6.50/drivers/mmc/host/sdhci-pci-core.c	2026-09-11 11:28:13.599719859 +0200
+@@ -1113,6 +1113,10 @@
+ static int byt_sd_probe_slot(struct sdhci_pci_slot *slot)
+ {
+ 	byt_probe_slot(slot);
++
++	/* Limit speed to 24 MHz */
++	pr_warn("%s: Limit speed to 24 MHz\n", mmc_hostname(slot->host->mmc));
++	slot->host->mmc->f_max = 24000000;
+ 	slot->host->mmc->caps |= MMC_CAP_WAIT_WHILE_BUSY |
+ 				 MMC_CAP_AGGRESSIVE_PM | MMC_CAP_CD_WAKE;
+ 	slot->cd_idx = 0;

@@ -1,0 +1,1 @@
+Build configuration for the h1190 startkit

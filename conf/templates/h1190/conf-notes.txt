@@ -1,0 +1,11 @@
+
+Two useful images for evaluation are:
+
+* core-image-minimal - Console based small image
+* core-image-sato - Image with graphical support
+
+Run:
+bitbake core-image-minimal
+
+or:
+bitbake core-image-sato
