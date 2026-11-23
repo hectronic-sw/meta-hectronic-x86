@@ -1,0 +1,12 @@
+[Unit]
+Description=H6089 initialization
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/h6089-init.sh start
+ExecStop=/usr/sbin/h6089-init.sh stop
+
+[Install]
+WantedBy=multi-user.target
+
